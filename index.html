@@ -11,63 +11,63 @@
 
   <!-- Cursor Personalizado -->
   <div class="cursor" id="cursor"></div>
-  <div class="cursor__ring" id="cursorRing"></div>
+  <div class="cursor_borde" id="cursorBorde"></div>
 
   <!-- Barra de Progreso -->
-  <div class="progress-bar" id="progress-bar"></div>
+  <div class="barra-progreso" id="barra-progreso"></div>
 
-  <!-- Toast -->
-  <div class="toast" id="toast">
-    <span class="toast__icon">🛒</span>
-    <span class="toast__msg" id="toast-msg">Producto Añadido!</span>
-    <div class="toast__bar" id="t-bar"></div>
+  <!-- noti -->
+  <div class="noti" id="noti">
+    <span class="noti__icon">🛒</span>
+    <span class="noti__msg" id="noti-msg">Producto Añadido!</span>
+    <div class="noti__bar" id="t-bar"></div>
   </div>
 
   <!-- Botón Volver Arriba -->
-  <button class="back-top" id="back-top" aria-label="Volver al Header">↑</button>
+  <button class="Volver-Arriba" id="Volver-Arriba" aria-label="Volver al Header">↑</button>
 
-  <!-- Navbar -->
-  <nav class="navbar" id="navbar">
-    <div class="navbar__logo">Pop it Store</div>
-    <ul class="navbar__links">
-      <li><a class="navbar__link" href="#about">¿Qué es el Pop it?</a></li>
-      <li><a class="navbar__link" href="#products">¡Elige tu Pop-It!</a></li>
-      <li><a class="navbar__link" href="#rules">Reglas del juego</a></li>
+  <!-- Menu Principal -->
+  <nav class="menu" id="menu">
+    <div class="menu__logo">Pop it Store</div>
+    <ul class="menu__links">
+      <li><a class="menu__link" href="#info">¿Qué es el Pop it?</a></li>
+      <li><a class="menu__link" href="#productos">¡Elige tu Pop-It!</a></li>
+      <li><a class="menu__link" href="#reglas">Reglas del juego</a></li>
     </ul>
-    <div class="navbar__hamburger" id="hamburger">
-      <span class="navbar__hamburger-line"></span>
-      <span class="navbar__hamburger-line"></span>
-      <span class="navbar__hamburger-line"></span>
+    <div class="menu_hamburguesa" id="hamburger">
+      <span class="menu_hamburguesa-linea"></span>
+      <span class="menu_hamburguesa-linea"></span>
+      <span class="menu_hamburguesa-linea"></span>
     </div>
   </nav>
 
   <!-- Menú Móvil -->
-  <div class="mobile-menu" id="mobileMenu">
-    <a class="mobile-menu__link" href="#about"    onclick="closeMob()">¿QUÉ ES?</a>
-    <a class="mobile-menu__link" href="#products" onclick="closeMob()">PRODUCTOS</a>
-    <a class="mobile-menu__link" href="#rules"    onclick="closeMob()">REGLAS</a>
+  <div class="menu-movil" id="mobileMenu">
+    <a class="menu-movil__link" href="#info"    onclick="closeMob()">¿QUÉ ES?</a>
+    <a class="menu-movil__link" href="#productos" onclick="closeMob()">PRODUCTOS</a>
+    <a class="menu-movil__link" href="#reglas"    onclick="closeMob()">REGLAS</a>
   </div>
 
-  <!-- Sección Hero (1) -->
-  <section class="hero">
-    <div class="hero__bubbles" id="heroBubbles"></div>
-    <div class="hero__content">
-      <h1 class="hero__title">POP IT!</h1>
-      <p class="hero__subtitle">¡El mejor juguete antiestrés - Una burbuja infinita!</p>
-      <a href="#products" class="hero__btn">COMPRAR</a>
+  <!-- Sección principal (1) -->
+  <section class="principal">
+    <div class="principal__bubbles" id="principalBubbles"></div>
+    <div class="principal__content">
+      <h1 class="principal__title">POP IT!</h1>
+      <p class="principal__subtitle">¡El mejor juguete antiestrés - Una burbuja infinita!</p>
+      <a href="#productos" class="principal__btn">COMPRAR</a>
     </div>
-    <div class="hero__media">
-      <div class="hero__blob"></div>
-      <div class="hero__img">
+    <div class="principal__media">
+      <div class="principal__blob"></div>
+      <div class="principal__img">
         <img src="img/backgroundNoBack.png" alt="Pop It"/>
       </div>
     </div>
   </section>
 
   <!-- Sección ¿Qué es? (2) -->
-  <section class="about" id="about">
-    <h2 class="about__title section-title reveal">¿Qué es el Pop it?</h2>
-    <p class="about__text reveal" style="transition-delay:.15s">
+  <section class="info" id="info">
+    <h2 class="info__title section-title reveal">¿Qué es el Pop it?</h2>
+    <p class="info__text reveal" style="transition-delay:.15s">
       Pop it literalmente se traduce como «reviéntalo». Es un juego infantil cuyo proceso
       puede compararse con el de reventar plástico de burbujas. Pero a diferencia del plástico,
       los pop its se pueden presionar con sensaciones y sonidos «infinitamente»: las decenas
@@ -76,9 +76,9 @@
   </section>
 
   <!-- Sección Productos (3) -->
-  <section class="products" id="products">
-    <h2 class="products__title section-title reveal">¡Elige tu Pop-It!</h2>
-    <div class="products__grid">
+  <section class="productos" id="productos">
+    <h2 class="productos__title section-title reveal">¡Elige tu Pop-It!</h2>
+    <div class="productos__grid">
 
       <div class="product-card reveal" style="transition-delay:.05s">
         <div class="product-card__img-wrap">
@@ -108,19 +108,19 @@
   </section>
 
   <!-- Sección Reglas (4) -->
-  <section class="rules" id="rules">
-    <div class="rules__content reveal-left">
-      <h2 class="rules__title">Reglas del juego</h2>
-      <p class="rules__text">
+  <section class="reglas" id="reglas">
+    <div class="reglas__content reveal-left">
+      <h2 class="reglas__title">Reglas del juego</h2>
+      <p class="reglas__text">
         Los jugadores se turnan presionando las burbujas. Debes terminar la fila que empezaste.
         Puedes presionar máximo 3 burbujas a la vez (deben estar juntas, no puedes presionar varias
         que no estén contiguas). El objetivo es que el rival sea el último en jugar. ¡Quien juegue
         último, pierde!
       </p>
     </div>
-    <div class="rules__media reveal-right">
-      <div class="rules__blob"></div>
-      <img src="img/photo.jpg" alt="Reglas del juego" class="rules__img"/>
+    <div class="reglas__media reveal-right">
+      <div class="reglas__blob"></div>
+      <img src="img/photo.jpg" alt="Reglas del juego" class="reglas__img"/>
     </div>
   </section>
 

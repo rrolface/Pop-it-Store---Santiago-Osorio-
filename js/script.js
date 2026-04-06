@@ -1,152 +1,169 @@
-/* ═══════════════════════════════════════
-   Pop it Store — JavaScript (BEM)
-   ═══════════════════════════════════════ */
+/* Cursor */
+const cursor = document.getElementById('cursor');
+const borde  = document.getElementById('cursorBorde');
 
-/* Cursor Personalizado */
-const cur  = document.getElementById('cursor');
-const ring = document.getElementById('cursorRing');
-let mx = 0, my = 0, rx = 0, ry = 0;
+let mouseX = 0, mouseY = 0;
+let bordeX = 0, bordeY = 0;
 
 document.addEventListener('mousemove', e => {
-  mx = e.clientX;
-  my = e.clientY;
+  mouseX = e.clientX;
+  mouseY = e.clientY;
 });
 
-// Bucle de animación del cursor
-(function cursorLoop() {
-  cur.style.left = mx + 'px';
-  cur.style.top  = my + 'px';
-  rx += (mx - rx) * 0.13;
-  ry += (my - ry) * 0.13;
-  ring.style.left = rx + 'px';
-  ring.style.top  = ry + 'px';
-  requestAnimationFrame(cursorLoop);
-})();
+function animarCursor() {
+  // punto principal
+  cursor.style.left = mouseX + 'px';
+  cursor.style.top  = mouseY + 'px';
 
-// Interacción del cursor con elementos
+  // borde con efecto suave
+  bordeX += (mouseX - bordeX) * 0.13;
+  bordeY += (mouseY - bordeY) * 0.13;
+
+  borde.style.left = bordeX + 'px';
+  borde.style.top  = bordeY + 'px';
+
+  requestAnimationFrame(animarCursor);
+}
+
+animarCursor();
+
+/* Hover en botones */
 document.querySelectorAll('a, button').forEach(el => {
   el.addEventListener('mouseenter', () => {
-    cur.classList.add('cursor--hovered');
-    ring.classList.add('cursor__ring--hovered');
+    cursor.classList.add('cursor--hovered');
+    borde.classList.add('cursor_borde--hovered');
   });
+
   el.addEventListener('mouseleave', () => {
-    cur.classList.remove('cursor--hovered');
-    ring.classList.remove('cursor__ring--hovered');
+    cursor.classList.remove('cursor--hovered');
+    borde.classList.remove('cursor_borde--hovered');
   });
 });
 
-/* Barra de progreso + Navbar sticky + Botón volver arriba */
-const progressBar = document.getElementById('progress-bar');
-const navbar      = document.getElementById('navbar');
-const backTop     = document.getElementById('back-top');
+
+/* Scroll en General */
+const barra = document.getElementById('barra-progreso');
+const menu  = document.getElementById('menu');
+const volverArriba = document.getElementById('Volver-Arriba');
 
 window.addEventListener('scroll', () => {
-  const h   = document.documentElement;
-  const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+  const doc = document.documentElement;
+  const progreso = (doc.scrollTop / (doc.scrollHeight - doc.clientHeight)) * 100;
 
-  progressBar.style.width = pct + '%';
-  navbar.classList.toggle('navbar--scrolled', window.scrollY > 40);
-  backTop.classList.toggle('back-top--visible', window.scrollY > 300);
-}, { passive: true });
+  barra.style.width = progreso + '%';
 
-backTop.addEventListener('click', () => {
+  menu.classList.toggle('menu--scrolled', window.scrollY > 40);
+  volverArriba.classList.toggle('Volver-Arriba--visible', window.scrollY > 300);
+});
+
+volverArriba.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-/* Animaciones de revelación al hacer scroll */
-const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
+
+/* Mostrar elementos cuando aparecen en pantalla */
+const observer = new IntersectionObserver(entradas => {
+  entradas.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
     }
   });
 }, { threshold: 0.18 });
 
-document.querySelectorAll(
-  '.reveal, .reveal-left, .reveal-right, .section-title'
-).forEach(el => revealObserver.observe(el));
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .section-title')
+  .forEach(el => observer.observe(el));
 
-/* Toast — Notificación de agregar al carrito */
-let toastTimer;
 
-function showToast(name) {
-  const toast = document.getElementById('toast');
-  const tBar  = document.getElementById('t-bar');
+/* Notificacion Agregado al Carrito*/
+let tiempoNoti;
 
-  document.getElementById('toast-msg').textContent =
-    '«' + name + '» Agregado al carrito!';
+function mostrarNoti(nombre) {
+  const noti = document.getElementById('noti');
+  const barra = document.getElementById('t-bar');
 
-  toast.classList.remove('toast--show');
-  tBar.style.animation = 'none';
-  void toast.offsetWidth;
+  document.getElementById('noti-msg').textContent =
+    '«' + nombre + '» agregado al carrito';
 
-  toast.classList.add('toast--show');
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => toast.classList.remove('toast--show'), 3200);
+  noti.classList.remove('noti--show');
+  barra.style.animation = 'none';
+  void noti.offsetWidth;
+
+  noti.classList.add('noti--show');
+
+  clearTimeout(tiempoNoti);
+  tiempoNoti = setTimeout(() => {
+    noti.classList.remove('noti--show');
+  }, 3200);
 }
 
-// Conectar toast a los botones COMPRAR
+
+/* Botones comprar */
 document.querySelectorAll('.product-card__btn').forEach(btn => {
   btn.addEventListener('click', e => {
     e.preventDefault();
-    showToast(btn.dataset.name || 'Producto');
+    mostrarNoti(btn.dataset.name || 'Producto');
   });
 });
 
-/* Efecto ripple al hacer clic en botones */
-document.querySelectorAll('.product-card__btn, .hero__btn').forEach(btn => {
+
+/* Efecto Ripple */
+document.querySelectorAll('.product-card__btn, .principal__btn').forEach(btn => {
   btn.addEventListener('click', function (e) {
     const rect = this.getBoundingClientRect();
-    const size = Math.max(rect.width, rect.height) * 2;
-    const ripple = document.createElement('span');
+    const tamaño = Math.max(rect.width, rect.height) * 2;
 
-    ripple.style.cssText = `
+    const efecto = document.createElement('span');
+
+    efecto.style.cssText = `
       position: absolute;
       border-radius: 50%;
-      pointer-events: none;
       background: rgba(255,255,255,0.35);
-      width: ${size}px;
-      height: ${size}px;
-      left: ${e.clientX - rect.left - size / 2}px;
-      top: ${e.clientY - rect.top - size / 2}px;
+      width: ${tamaño}px;
+      height: ${tamaño}px;
+      left: ${e.clientX - rect.left - tamaño / 2}px;
+      top: ${e.clientY - rect.top - tamaño / 2}px;
       transform: scale(0);
       animation: ripple 0.55s ease-out forwards;
     `;
 
-    this.appendChild(ripple);
-    setTimeout(() => ripple.remove(), 600);
+    this.appendChild(efecto);
+    setTimeout(() => efecto.remove(), 600);
   });
 });
 
-/* Burbujas flotantes en el Hero */
-const bubbleContainer = document.getElementById('heroBubbles');
+
+/* Efecto Burbujas */
+const contenedorBurbujas = document.getElementById('principalBubbles');
 
 for (let i = 0; i < 16; i++) {
-  const bubble = document.createElement('div');
-  bubble.className = 'hero__bubble';
-  const size = 18 + Math.random() * 65;
+  const burbuja = document.createElement('div');
+  burbuja.className = 'principal__bubble';
 
-  bubble.style.cssText = `
-    width: ${size}px;
-    height: ${size}px;
+  const tamaño = 18 + Math.random() * 65;
+
+  burbuja.style.cssText = `
+    width: ${tamaño}px;
+    height: ${tamaño}px;
     left: ${Math.random() * 100}%;
     bottom: -80px;
     animation-duration: ${5 + Math.random() * 9}s;
     animation-delay: ${Math.random() * 7}s;
   `;
-  bubbleContainer.appendChild(bubble);
+
+  contenedorBurbujas.appendChild(burbuja);
 }
 
-/* Menú hamburguesa móvil */
-const hamburger  = document.getElementById('hamburger');
-const mobileMenu = document.getElementById('mobileMenu');
 
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('navbar__hamburger--open');
-  mobileMenu.classList.toggle('mobile-menu--open');
+/* Menu Movil */
+const hamburguesa = document.getElementById('hamburger');
+const menuMovil   = document.getElementById('mobileMenu');
+
+hamburguesa.addEventListener('click', () => {
+  hamburguesa.classList.toggle('menu_hamburguesa--open');
+  menuMovil.classList.toggle('menu-movil--open');
 });
 
 function closeMob() {
-  hamburger.classList.remove('navbar__hamburger--open');
-  mobileMenu.classList.remove('mobile-menu--open');
+  hamburguesa.classList.remove('menu_hamburguesa--open');
+  menuMovil.classList.remove('menu-movil--open');
 }
