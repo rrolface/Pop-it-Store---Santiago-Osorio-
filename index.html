@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pop it Store</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+  <!-- Cursor Personalizado -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor__ring" id="cursorRing"></div>
+
+  <!-- Barra de Progreso -->
+  <div class="progress-bar" id="progress-bar"></div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast">
+    <span class="toast__icon">🛒</span>
+    <span class="toast__msg" id="toast-msg">Producto Añadido!</span>
+    <div class="toast__bar" id="t-bar"></div>
+  </div>
+
+  <!-- Botón Volver Arriba -->
+  <button class="back-top" id="back-top" aria-label="Volver al Header">↑</button>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar__logo">Pop it Store</div>
+    <ul class="navbar__links">
+      <li><a class="navbar__link" href="#about">¿Qué es el Pop it?</a></li>
+      <li><a class="navbar__link" href="#products">¡Elige tu Pop-It!</a></li>
+      <li><a class="navbar__link" href="#rules">Reglas del juego</a></li>
+    </ul>
+    <div class="navbar__hamburger" id="hamburger">
+      <span class="navbar__hamburger-line"></span>
+      <span class="navbar__hamburger-line"></span>
+      <span class="navbar__hamburger-line"></span>
+    </div>
+  </nav>
+
+  <!-- Menú Móvil -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a class="mobile-menu__link" href="#about"    onclick="closeMob()">¿QUÉ ES?</a>
+    <a class="mobile-menu__link" href="#products" onclick="closeMob()">PRODUCTOS</a>
+    <a class="mobile-menu__link" href="#rules"    onclick="closeMob()">REGLAS</a>
+  </div>
+
+  <!-- Sección Hero (1) -->
+  <section class="hero">
+    <div class="hero__bubbles" id="heroBubbles"></div>
+    <div class="hero__content">
+      <h1 class="hero__title">POP IT!</h1>
+      <p class="hero__subtitle">¡El mejor juguete antiestrés - Una burbuja infinita!</p>
+      <a href="#products" class="hero__btn">COMPRAR</a>
+    </div>
+    <div class="hero__media">
+      <div class="hero__blob"></div>
+      <div class="hero__img">
+        <img src="img/backgroundNoBack.png" alt="Pop It"/>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección ¿Qué es? (2) -->
+  <section class="about" id="about">
+    <h2 class="about__title section-title reveal">¿Qué es el Pop it?</h2>
+    <p class="about__text reveal" style="transition-delay:.15s">
+      Pop it literalmente se traduce como «reviéntalo». Es un juego infantil cuyo proceso
+      puede compararse con el de reventar plástico de burbujas. Pero a diferencia del plástico,
+      los pop its se pueden presionar con sensaciones y sonidos «infinitamente»: las decenas
+      de burbujas de silicona simplemente se empujan hacia el otro lado.
+    </p>
+  </section>
+
+  <!-- Sección Productos (3) -->
+  <section class="products" id="products">
+    <h2 class="products__title section-title reveal">¡Elige tu Pop-It!</h2>
+    <div class="products__grid">
+
+      <div class="product-card reveal" style="transition-delay:.05s">
+        <div class="product-card__img-wrap">
+          <img src="img/square.png" alt="Cuadrado multicolor"/>
+        </div>
+        <span class="product-card__name">Cuadrado multicolor</span>
+        <a href="#" class="product-card__btn" data-name="Cuadrado multicolor">COMPRAR</a>
+      </div>
+
+      <div class="product-card reveal" style="transition-delay:.18s">
+        <div class="product-card__img-wrap">
+          <img src="img/amongus.png" alt="Among Us, mármol"/>
+        </div>
+        <span class="product-card__name">Among Us, mármol</span>
+        <a href="#" class="product-card__btn" data-name="Among Us, mármol">COMPRAR</a>
+      </div>
+
+      <div class="product-card reveal" style="transition-delay:.31s">
+        <div class="product-card__img-wrap">
+          <img src="img/round.png" alt="Redondo multicolor"/>
+        </div>
+        <span class="product-card__name">Redondo multicolor</span>
+        <a href="#" class="product-card__btn" data-name="Redondo multicolor">COMPRAR</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Sección Reglas (4) -->
+  <section class="rules" id="rules">
+    <div class="rules__content reveal-left">
+      <h2 class="rules__title">Reglas del juego</h2>
+      <p class="rules__text">
+        Los jugadores se turnan presionando las burbujas. Debes terminar la fila que empezaste.
+        Puedes presionar máximo 3 burbujas a la vez (deben estar juntas, no puedes presionar varias
+        que no estén contiguas). El objetivo es que el rival sea el último en jugar. ¡Quien juegue
+        último, pierde!
+      </p>
+    </div>
+    <div class="rules__media reveal-right">
+      <div class="rules__blob"></div>
+      <img src="img/photo.jpg" alt="Reglas del juego" class="rules__img"/>
+    </div>
+  </section>
+
+  <!-- Footer (5) -->
+  <footer class="footer">
+    <div class="footer__logo">POP IT STORE</div>
+    <ul class="footer__links">
+      <li><a class="footer__link" href="#">Métodos de pago</a></li>
+      <li><a class="footer__link" href="#">Envío</a></li>
+      <li><a class="footer__link" href="#">Mayoreo</a></li>
+      <li><a class="footer__link" href="#">Contactos</a></li>
+    </ul>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
