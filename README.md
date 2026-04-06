@@ -14,18 +14,17 @@
 
 ## ✅ ¿Qué construí?
 El sitio tiene 5 secciones segun la imagen de referencia los cuales replique:
-- **Hero** — la sección principal con el título grande, el subtítulo y el botón de compra
-- **¿Qué es?** — una pequeña descripción del producto
-- **Productos** — el catálogo con los 3 Pop its disponibles
-- **Reglas del juego** — cómo se juega
+- **Seccion Principal** — la sección principal con el título grande, el subtítulo y el botón de compra
+- **Seccion Info?** — una pequeña descripción del producto
+- **Seccion Productos** — el catálogo con los 3 Pop its disponibles
+- **Seccion Reglas del juego** — cómo se juega
 - **Footer** — los enlaces del pie de página
 
 ---
 
 ## 🎨 ¿Cómo lo organicé?
-Usé la **metodología BEM** para nombrar todas las clases para una organizacione exitosa. 
-Para el layout usé **Flexbox** en todas las secciones y me aseguré de que el sitio sea
-responsive para que tenga una excelente vista en todos los dispositivos.
+Use la metodologia BEM como requerimiento posteriormente, se uso grid y flexbox para organizacion
+y por ultimo aplique algunas animaciones para agregarle un poco mas de interactividad con js :).
 
 ---
 
@@ -33,10 +32,10 @@ responsive para que tenga una excelente vista en todos los dispositivos.
 
 - Un cursor personalizado que sigue al mouse con animación suave
 - Menú hamburguesa funcional para móvil
-- Burbujas flotantes animadas en el hero
-- Barra de progreso al hacer scroll
+- Burbujas flotantes animadas en la seccion Principal
 - Notificación toast cuando agregas un producto al carrito 🛒
 - Efecto ripple en los botones al hacer clic
 - Botón para volver arriba
 - Animaciones de entrada al hacer scroll en cada sección
-- Un blob que cambia de forma detrás de la imagen principal
+- Una especie de burbuja que cambia de forma detrás de la imagen principal.
+- Animacion de translado de la imagen principal.
