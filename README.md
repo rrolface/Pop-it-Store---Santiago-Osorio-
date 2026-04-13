@@ -22,13 +22,13 @@ El sitio tiene 5 secciones segun la imagen de referencia los cuales replique:
 
 ---
 
-## 🎨 ¿Cómo lo organicé?
+##  ✅ ¿Cómo lo organicé?
 Use la metodologia BEM como requerimiento posteriormente, se uso grid y flexbox para organizacion
 y por ultimo aplique algunas animaciones para agregarle un poco mas de interactividad con js :).
 
 ---
 
-## ✨ Que Agregue?
+##  ✅ Que Agregue?
 
 - Un cursor personalizado que sigue al mouse con animación suave
 - Menú hamburguesa funcional para móvil
